@@ -1,0 +1,2 @@
+https://pypi.org/project/docx-mailmerge/
+https://pbpython.com/python-word-template.html
