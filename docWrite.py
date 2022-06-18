@@ -1,7 +1,6 @@
 # By Code Fellas
 
 from __future__ import print_function
-from click import prompt
 from mailmerge import MailMerge
 from datetime import date
 import os
