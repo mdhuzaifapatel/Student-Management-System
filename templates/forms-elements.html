@@ -289,91 +289,13 @@
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="components-alerts.html">
-                <i class="bi bi-circle"></i><span>Alerts</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-accordion.html">
-                <i class="bi bi-circle"></i><span>Accordion</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-badges.html">
-                <i class="bi bi-circle"></i><span>Badges</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-breadcrumbs.html">
-                <i class="bi bi-circle"></i><span>Breadcrumbs</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-buttons.html">
-                <i class="bi bi-circle"></i><span>Buttons</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-cards.html">
-                <i class="bi bi-circle"></i><span>Cards</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-carousel.html">
-                <i class="bi bi-circle"></i><span>Carousel</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-list-group.html">
-                <i class="bi bi-circle"></i><span>List group</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-modal.html">
-                <i class="bi bi-circle"></i><span>Modal</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-tabs.html">
-                <i class="bi bi-circle"></i><span>Tabs</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-pagination.html">
-                <i class="bi bi-circle"></i><span>Pagination</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-progress.html">
-                <i class="bi bi-circle"></i><span>Progress</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-spinners.html">
-                <i class="bi bi-circle"></i><span>Spinners</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-tooltips.html">
-                <i class="bi bi-circle"></i><span>Tooltips</span>
-              </a>
-            </li>
-          </ul>
-        </li><!-- End Components Nav -->
-
-        <li class="nav-item">
           <a class="nav-link " data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul id="forms-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
             <li>
-              <a href="forms-elements.html" class="active">
-                <i class="bi bi-circle"></i><span>Form Elements</span>
+              <a href="{{url_for('studentRegister')}}" class="active">
+                <i class="bi bi-circle"></i><span>Student Details</span>
               </a>
             </li>
             <li>
@@ -517,12 +439,12 @@
     <main id="main" class="main">
 
       <div class="pagetitle">
-        <h1>Form Elements</h1>
+        <h1>Student Details</h1>
         <nav>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{url_for('dashboard')}}">Home</a></li>
             <li class="breadcrumb-item">Forms</li>
-            <li class="breadcrumb-item active">Elements</li>
+            <li class="breadcrumb-item active">Student Details</li>
           </ol>
         </nav>
       </div><!-- End Page Title -->
@@ -535,7 +457,7 @@
               <div class="card-body">
                 <h5 class="card-title">Student Form</h5>
 
-                <!-- General Form Elements -->
+                <!-- General Student Details -->
                 <form>
                   <!-- This is Full name -->
                   <!-- <div class="row mb-3">
@@ -715,7 +637,7 @@
                     </div>
                   </div>
 
-                </form><!-- End General Form Elements -->
+                </form><!-- End General Student Details -->
 
               </div>
             </div>
@@ -726,9 +648,9 @@
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Advanced Form Elements</h5>
+                <h5 class="card-title">Advanced Student Details</h5>
 
-                <!-- Advanced Form Elements -->
+                <!-- Advanced Student Details -->
                 <form>
                   <div class="row mb-5">
                     <label class="col-sm-2 col-form-label">Switches</label>
@@ -843,7 +765,7 @@
                     </div>
                   </div>
 
-                </form><!-- End General Form Elements -->
+                </form><!-- End General Student Details -->
 
               </div>
             </div>
