@@ -18,6 +18,10 @@ def login():
 def register():
     return render_template("pages-register.html")
 
+@app.route('/studentRegister')
+def studentForm():
+    return render_template("forms-elements.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
