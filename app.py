@@ -19,10 +19,16 @@ def register():
     return render_template("pages-register.html")
 
 @app.route('/studentRegister')
+<<<<<<< HEAD
+def studentForm():
+    return render_template("forms-elements.html")
+
+=======
 def studentRegister():
     return render_template("forms-elements.html")
 
 
+>>>>>>> master
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
