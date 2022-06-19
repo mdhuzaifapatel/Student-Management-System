@@ -10,7 +10,7 @@ app.config['SECRET_KEY'] = "student"
 
 ############### Routes ############## 
 @app.route('/')
-def landingPage():
+def home():
     return render_template('home.html')
 
 @app.route('/login')
