@@ -1,10 +1,12 @@
 # By Code Fellas
+from re import L
 from forms import *
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import sqlite3
 import os
+import docWrite as doc
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "student"
@@ -63,21 +65,11 @@ def login():
             if userName == user[0] and password == user[1]:
                 session["loggedin"] = True
                 session["username"] = userName
-                return redirect(url_for("dashboard"))
+                return redirect(url_for("studentRegister"))
             else:
                 msg = "Enter valid username and password"
 
     return render_template('login.html', msg=msg)
-
-
-@app.route('/loginValidate', methods=['POST'])
-def loginValidate():
-
-    userName = request.form.get('username')
-    password = request.form.get('password')
-
-    return render_template('/dashboard')
-    # return f"Username is {username} and Password is {password}"
 
 
 @app.route('/signup', methods=['POST', 'GET'])
@@ -100,6 +92,12 @@ def signup():
     return render_template('signup.html', msg=msg)
 
 
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
+
+
 @app.route('/dashboard')
 def dashboard():
     return render_template("index.html")
@@ -108,7 +106,6 @@ def dashboard():
 @app.route('/studentRegister')
 def studentRegister():
     return render_template("forms-elements.html")
-
 
 ############### Main ##############
 if __name__ == '__main__':
