@@ -6,42 +6,18 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import sqlite3
 import os
-import docWrite as doc
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "student"
 
+############### Users Database ##############
 conn = sqlite3.connect("signup.db")
 c = conn.cursor()
 c.execute("CREATE TABLE IF NOT EXISTS Users(username TEXT, password TEXT)")
 conn.commit()
 conn.close()
 
-
-#################################################################
-# # Database Creation
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
-# db = SQLAlchemy(app)
-
-# db.create_all()
-
-
-# Models
-# class User(db.Model):
-#     sno = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(200), nullable=False)
-#     name = db.Column(db.String(200), nullable=False)
-#     email = db.Column(db.String(200), nullable=False)
-#     password = db.Column(db.String(200), nullable=False)
-
-#     def __repr__(self) -> str:
-#         return f"{self.username} - {self.name}"
-########################################################################
-
-
 ############### Routes ##############
-
 
 @app.route('/')
 def home():
@@ -109,4 +85,5 @@ def studentRegister():
 
 ############### Main ##############
 if __name__ == '__main__':
-    app.run(debug=True, port=8000)
+    # app.run(debug=True, port=8000)
+    app.run(debug=False, host = '0.0.0.0')
