@@ -1,14 +1,17 @@
 # By Code Fellas
-from re import L
-from forms import *
+# from re import L
+# from forms import *
 from flask import *
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+from flaskwebgui import FlaskUI
+# from flask_sqlalchemy import SQLAlchemy
+# from flask_migrate import Migrate
 import sqlite3
-import os
+# import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "student"
+ui = FlaskUI(app, maximized=True, close_server_on_exit=False)
+
 
 ############### Users Database ##############
 conn = sqlite3.connect("signup.db")
@@ -18,6 +21,7 @@ conn.commit()
 conn.close()
 
 ############### Routes ##############
+
 
 @app.route('/')
 def home():
@@ -83,7 +87,8 @@ def dashboard():
 def studentRegister():
     return render_template("forms-elements.html")
 
+
 ############### Main ##############
 if __name__ == '__main__':
+    ui.run()
     # app.run(debug=True, port=8000)
-    app.run(debug=False, host = '0.0.0.0')
