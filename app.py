@@ -90,6 +90,12 @@ def studentRegister():
 def profile():
     return render_template("users-profile.html")
 
+################### Documents Page #####################
+@app.route('/documents')
+def documents():
+    return render_template("documents.html")
+
+
 
 
 ################# Logout session ####################
