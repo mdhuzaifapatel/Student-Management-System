@@ -84,7 +84,7 @@ def dashboard():
 
 @app.route('/studentRegister')
 def studentRegister():
-    return render_template("forms-elements.html")
+    return render_template("student-details.html")
 
 @app.route('/profile')
 def profile():
