@@ -2,7 +2,7 @@
 # from re import L
 # from forms import *
 from flask import *
-from flaskwebgui import FlaskUI
+# from flaskwebgui import FlaskUI
 # from flask_sqlalchemy import SQLAlchemy
 # from flask_migrate import Migrate
 import sqlite3
@@ -22,35 +22,14 @@ conn.close()
 
 
 ############### Routes ##############
+
+############### Home Page ##############
 @app.route('/')
 def home():
     return render_template('home.html')
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    r = ""
-    msg = ""
-    if request.method == 'POST':
-        userName = request.form['username']
-        password = request.form['password']
-        conn = sqlite3.connect("signup.db")
-        c = conn.cursor()
-        c.execute("SELECT * FROM Users WHERE username ='" +
-                  userName+"' and password = '"+password+"'")
-        r = c.fetchall()
-
-        for user in r:
-            if userName == user[0] and password == user[1]:
-                session["loggedin"] = True
-                session["username"] = userName
-                return redirect(url_for("studentRegister"))
-            else:
-                msg = "Enter valid username and password"
-
-    return render_template('login.html', msg=msg)
-
-
+################## Signup Page ###################
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
@@ -71,24 +50,54 @@ def signup():
     return render_template('signup.html', msg=msg)
 
 
+################### Login Page ####################
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    r = ""
+    msg = ""
+    if request.method == 'POST':
+        userName = request.form['username']
+        password = request.form['password']
+        conn = sqlite3.connect("signup.db")
+        c = conn.cursor()
+        c.execute("SELECT * FROM Users WHERE username ='" +
+                  userName+"' and password = '"+password+"'")
+        r = c.fetchall()
+
+        for user in r:
+            if userName == user[0] and password == user[1]:
+                session["loggedin"] = True
+                session["username"] = userName
+                return redirect(url_for("dashboard"))
+            else:
+                msg = "Enter valid username and password"
+
+    return render_template('login.html', msg=msg)    
+
+
+#################### Dashboard Page #####################
+@app.route('/dashboard')
+def dashboard():
+    return render_template("index.html")
+
+################### StudentRegister Page ##################
+@app.route('/studentRegister')
+def studentRegister():
+    return render_template("student-details.html")
+
+################### User Profile Page #####################
+@app.route('/profile')
+def profile():
+    return render_template("users-profile.html")
+
+
+
+################# Logout session ####################
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('login'))
 
-
-@app.route('/dashboard')
-def dashboard():
-    return render_template("index.html")
-
-
-@app.route('/studentRegister')
-def studentRegister():
-    return render_template("student-details.html")
-
-@app.route('/profile')
-def profile():
-    return render_template("users-profile.html")
 
 ############### Main ##############
 if __name__ == '__main__':

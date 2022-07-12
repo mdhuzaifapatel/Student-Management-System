@@ -51,9 +51,10 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">KLEMSSCET</span>
+      
+      <a href="{{url_for('dashboard')}}" class="logo d-flex align-items-center">
+        <img src="{{ url_for('static',filename='assets/img/logo.png') }}" alt="">
+        <span class="d-none d-lg-block">KLE MSSCET</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -63,7 +64,8 @@
         <input type="text" name="query" placeholder="Search" title="Enter search keyword">
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
-    </div><!-- End Search Bar -->
+    </div>
+    <!-- End Search Bar -->
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
@@ -220,13 +222,13 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Ashutosh</span>
+            <img src="{{url_for('static', filename='assets/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{session.username}}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Ashutosh</h6>
+              <h6>{{session.username}}</h6>
               <span>2KL19EC016</span>
             </li>
             <li>
@@ -234,7 +236,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="/profile">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -244,7 +246,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="/profile">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -254,7 +256,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+              <a class="dropdown-item d-flex align-items-center" href="https://www.instagram.com/code_fellas/">
                 <i class="bi bi-question-circle"></i>
                 <span>Need Help?</span>
               </a>
@@ -264,7 +266,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="{{url_for('logout')}}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -290,6 +292,12 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('studentRegister')}}">
+          <i class="bi bi-journal-text"></i>
+          <span>Student Details</span>
+        </a>
+      </li>
       <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -368,8 +376,8 @@
         </ul>
       </li> -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <!-- <li class="nav-item"> -->
+        <!-- <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -378,8 +386,8 @@
               <i class="bi bi-circle"></i><span>Form Elements</span>
             </a>
           </li>
-          <li>
-            <a href="forms-layouts.html">
+          <li> -->
+            <!-- <a href="forms-layouts.html">
               <i class="bi bi-circle"></i><span>Form Layouts</span>
             </a>
           </li>
@@ -393,8 +401,9 @@
               <i class="bi bi-circle"></i><span>Form Validation</span>
             </a>
           </li>
-        </ul>
-      </li><!-- End Forms Nav -->
+        </ul> -->
+      <!-- </li> -->
+      <!-- End Forms Nav -->
 
       <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
@@ -463,7 +472,7 @@
       </li> -->
       <!-- End Icons Nav -->
 
-      <li class="nav-heading">Pages</li>
+      <!-- <li class="nav-heading">Pages</li> -->
 
       <li class="nav-item">
         <a class="nav-link " href="{{url_for('profile')}}">
@@ -489,7 +498,7 @@
       <!-- End Contact Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
+        <a class="nav-link collapsed" href="{{url_for('signup')}}">
           <i class="bi bi-card-list"></i>
           <span>Register</span>
         </a>
@@ -497,7 +506,7 @@
       <!-- End Register Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
+        <a class="nav-link collapsed" href="{{url_for('login')}}">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Login</span>
         </a>
@@ -544,7 +553,7 @@
                 <h5 class="card-title">Student Form</h5>
 
                 <!-- General Form Elements -->
-                <form>
+                <form method="post">
                   <!-- This is Full name -->
                   <!-- <div class="row mb-3">
                   
@@ -571,28 +580,49 @@
                   <!-- <label class="col-sm-2 col-form-label">Full name</label> -->
                   <div class="row mb-3 col-form-label">
                     <div class="col-md-4">
-                      <label for="input-group-text" class="form-label">First name</label>
-                      <input type="text" class="form-control" id="validationCustom01" required>
+                      <label for="input-group-text" class="form-label">Full name</label>
+                      <input type="text" name="fullname" class="form-control" id="validationCustom01" required>
                     </div>
                     <div class="col-md-4">
-                      <label for="input-group-text" class="form-label">Middle name</label>
-                      <input type="text" class="form-control" id="validationCustom02" required>
+                      <label for="input-group-text" class="form-label">USN</label>
+                      <input type="text" name="usn" class="form-control" id="validationCustom02" required>
                     </div>
                     <div class="col-md-4">
-                      <label for="input-group-text" class="form-label">Last name</label>
-                      <input type="text" class="form-control" id="validationCustom03" required>
+                      <label for="input-group-text" class="form-label">Date of birth</label>
+                      <input type="date"  name="dob" class="form-control" id="validationCustom03" required>
 
                     </div>
                   </div>
+
+                  <!-- Branch -->
                   <div class="row mb-3 col-form-label">
                     <div class="col-md-6">
-                      <label for="input-group-text" class="form-label">Date of Birth</label>
-                      <input type="date" class="form-control" id="validationCustom01" required>
+                      <label for="input-group-text" class="form-label">Branch</label>
+                        <select class="form-select" aria-label="Default select example">
+                          <option selected>Select your branch</option>
+                          <option value="1" name="branch" >CSE</option>
+                          <option value="2" name="branch" >ECE</option>
+                          <option value="3" name="branch" >EEE</option>
+                          <option value="4" name="branch" >Civil</option>
+                          <option value="5" name="branch" >Mechanical</option>
+                          <option value="6" name="branch" >Bio Medical</option>
+                          <option value="7" name="branch" >Chemical</option>
+                        </select>
+                      <!-- <input type="text" class="form-control" id="validationCustom01" required> -->
                     </div>
+
+                    <!-- Semester -->
                     <div class="col-md-6">
-                      <label for="input-group-text" class="form-label">Phone number</label>
-                      <input type="text" class="form-control" id="validationCustom02" required>
+                      <label for="input-group-text" class="form-label">Semester</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Select your semester</option>
+                        <option value="1" name="sem">I/II</option>
+                        <option value="2" name="sem">III/IV</option>
+                        <option value="3" name="sem">V/VI</option>
+                        <option value="4" name="sem">VII/VIII</option>
+                      </select>
                     </div>
+
                     <!-- <div class="col-md-4">
                       <label for="input-group-text" class="form-label">Last name</label>
                       <input type="text" class="form-control" id="validationCustom03" required>
@@ -600,7 +630,7 @@
                     </div> -->
                   </div>
 
-                  <div class="row mb-3">
+                  <!-- <div class="row mb-3">
                     <label for="inputPassword" class="col-sm-2 col-form-label">High School</label>
                     <div class="col-sm-10">
                       <textarea class="form-control" style="height: 20px"></textarea>
@@ -612,7 +642,7 @@
                     <div class="col-sm-10">
                       <textarea class="form-control" style="height: 20px"></textarea>
                     </div>
-                  </div>
+                  </div> -->
 
                  
 
@@ -620,17 +650,18 @@
                   <div class="row mb-3">
                     <div class="col-md-6">
                       <label for="input-group-text" class="form-label">Place of Birth</label>
-                      <input type="text" class="form-control" required>
+                      <input type="text" name="placeofbirth" class="form-control" required>
                     </div>
 
+                    <!-- State -->
                     <div class="col-md-6">
                       <label for="input-group-text" class="form-label">State</label>
-                      <input type="text" class="form-control" required>
+                      <input type="text" name="state" class="form-control" required>
                     </div>
                   </div>
 
                   <!-- Blood Group -->
-                  <div class="row mb-3">
+                  <!-- <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Select</label>
                     <div class="col-sm-10">
                       <select class="form-select" aria-label="Default select example">
@@ -645,20 +676,20 @@
                         <option value="3">AB -ve</option>
                       </select>
                     </div>
-                  </div>
+                  </div> -->
 
                   <fieldset class="row mb-3">
                     <legend class="col-form-label col-sm-2 pt-0">Sex</legend>
                     <div class="col-sm-10">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                        <input class="form-check-input" type="radio" name="sex" id="gridRadios1" value="option1"
                           checked>
                         <label class="form-check-label" for="gridRadios1">
                           Male
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                        <input class="form-check-input" type="radio" name="sex" id="gridRadios2" value="option2">
                         <label class="form-check-label" for="gridRadios2">
                           Female
                         </label>
@@ -670,18 +701,11 @@
                   
 
                   <div class="row mb-3">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Address</label>
+                    <label for="" class="col-sm-2 col-form-label">Address</label>
                     <div class="col-sm-10">
-                      <textarea class="form-control" style="height: 100px"></textarea>
+                      <textarea name="address" class="form-control" style="height: 100px"></textarea>
                     </div>
                   </div>
-
-                 
-                   
-
-
-
-                 
 
                   <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Submit Button</label>
@@ -774,14 +798,11 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
       <div class="copyright">
-        &copy; Copyright <strong><span>Code Fellas</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Code Fellas</span></strong
+        >. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://www.instagram.com/code_fellas/">Team Code Fellas</a>
       </div>
     </footer><!-- End Footer -->
 
