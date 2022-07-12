@@ -10,7 +10,7 @@ import sqlite3
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "student"
-ui = FlaskUI(app, maximized=True, close_server_on_exit=False)
+# ui = FlaskUI(app, maximized=True, close_server_on_exit=False)
 
 
 ############### Users Database ##############
@@ -20,9 +20,8 @@ c.execute("CREATE TABLE IF NOT EXISTS Users(username TEXT, password TEXT)")
 conn.commit()
 conn.close()
 
+
 ############### Routes ##############
-
-
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -66,7 +65,7 @@ def signup():
             msg = 'Account is created sucessfully'
             conn.commit()
             conn.close()
-            return render_template('login.html')
+            return redirect(url_for('login'))
     else:
         msg = 'Something went wrong'
     return render_template('signup.html', msg=msg)
@@ -87,8 +86,11 @@ def dashboard():
 def studentRegister():
     return render_template("forms-elements.html")
 
+@app.route('/profile')
+def profile():
+    return render_template("users-profile.html")
 
 ############### Main ##############
 if __name__ == '__main__':
-    ui.run()
-    # app.run(debug=True, port=8000)
+    # ui.run()
+    app.run(debug=True, port=8000)

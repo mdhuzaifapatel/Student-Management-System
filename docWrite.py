@@ -2,6 +2,7 @@
 from __future__ import print_function
 from mailmerge import MailMerge
 from datetime import date
+import win32api
 import os
 
 # Take info from user
@@ -12,6 +13,7 @@ name = input('Enter your Name: ').title()
 # degree = input('Enter your Degree: ').upper()
 # branch = input('Enter your Branch: ').upper()
 # usn = input('Enter your USN: ').upper()
+# sem = input('Enter your USN: ').upper()
 # dob = input('Enter your Date of Birth: ')
 
 # Define the templates - assumes they are in the same directory as the code
@@ -37,11 +39,12 @@ bonafide.write(f'StudentDocs\{name}_Bonafide.docx')
 
 
 # Print the document
-# win32api.ShellExecute(0, 'print', filename, None, '.', 0)
+filename = f'D:\Learning\PROJECTS\Mini Project\Student-Management-System\StudentDocs\{name}_Bonafide.docx'
+win32api.ShellExecute(0, 'print', filename, None, '.', 0)
 
 # printChoice = input('\nDo you want to print the document (Y/N):')
 # if(printChoice == 'Y' or 'y'):
-#     filename = f'D:\Learning\PROJECTS\Mini Project\Student Management System\StudentDocs\{name}_Bonafide.docx'
+#     filename = f'D:\Learning\PROJECTS\Mini Project\Student-Management-System\StudentDocs\{name}_Bonafide.docx'
 #     os.startfile(filename, "print")
 # else:
-#     exit()
+    # exit()
