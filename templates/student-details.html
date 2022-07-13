@@ -535,12 +535,11 @@
     <main id="main" class="main">
 
       <div class="pagetitle">
-        <h1>Form Elements</h1>
+        <h1>Enter Student Details</h1>
         <nav>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item">Forms</li>
-            <li class="breadcrumb-item active">Elements</li>
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active">Student Details</li>
           </ol>
         </nav>
       </div><!-- End Page Title -->
@@ -554,43 +553,19 @@
                 <h5 class="card-title">Student Form</h5>
 
                 <!-- General Form Elements -->
-                <form method="post">
-                  <!-- This is Full name -->
-                  <!-- <div class="row mb-3">
-                  
-                  <div class="row">
-                    
-                      <div class="form-floating col">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="text">
-                        <label for="floatingInput">First name</label>
-                      </div>
-                      <div class="form-floating col">
-                        <input type="text" class="form-control" id="floatingPassword" placeholder="text">
-                        <label for="floatingInput">Middle name</label>
-                      </div>
-                      <div class="form-floating col">
-                        <input type="text" class="form-control" id="floatingPassword" placeholder="text">
-                        <label for="floatingInput">Last name</label>
-                      </div>
-                    
-                    
-                  </div>
-                </div> -->
-
-                  <!-- Full name -->
-                  <!-- <label class="col-sm-2 col-form-label">Full name</label> -->
+                <form row g-3 needs-validation action="{{ url_for('studentRegister')}}" method="post">
                   <div class="row mb-3 col-form-label">
                     <div class="col-md-4">
-                      <label for="input-group-text" class="form-label">Full name</label>
-                      <input type="text" name="fullname" class="form-control" id="validationCustom01" required>
+                      <label for="fname" class="form-label">Full name</label>
+                      <input type="text" name="fname" class="form-control" id="fname" required>
                     </div>
                     <div class="col-md-4">
-                      <label for="input-group-text" class="form-label">USN</label>
-                      <input type="text" name="usn" class="form-control" id="validationCustom02" required>
+                      <label for="usn" class="form-label">USN</label>
+                      <input type="text" name="usn" class="form-control" id="usn" required>
                     </div>
                     <div class="col-md-4">
-                      <label for="input-group-text" class="form-label">Date of birth</label>
-                      <input type="date"  name="dob" class="form-control" id="validationCustom03" required>
+                      <label for="dob" class="form-label">Date of birth</label>
+                      <input type="date"  name="dob" class="form-control" id="dob" required>
 
                     </div>
                   </div>
@@ -598,29 +573,29 @@
                   <!-- Branch -->
                   <div class="row mb-3 col-form-label">
                     <div class="col-md-6">
-                      <label for="input-group-text" class="form-label">Branch</label>
-                        <select class="form-select" aria-label="Default select example">
+                      <label for="branch" class="form-label">Branch</label>
+                        <select class="form-select" name="branch" id="branch" aria-label="Default select example">
                           <option selected>Select your branch</option>
-                          <option value="1" name="branch" >CSE</option>
-                          <option value="2" name="branch" >ECE</option>
-                          <option value="3" name="branch" >EEE</option>
-                          <option value="4" name="branch" >Civil</option>
-                          <option value="5" name="branch" >Mechanical</option>
-                          <option value="6" name="branch" >Bio Medical</option>
-                          <option value="7" name="branch" >Chemical</option>
+                          <option value="CSE">CSE</option>
+                          <option value="ECE">ECE</option>
+                          <option value="EEE">EEE</option>
+                          <option value="Civil">Civil</option>
+                          <option value="Mechanical">Mechanical</option>
+                          <option value="Bio Medical">Bio Medical</option>
+                          <option value="Chemical">Chemical</option>
                         </select>
                       <!-- <input type="text" class="form-control" id="validationCustom01" required> -->
                     </div>
 
                     <!-- Semester -->
                     <div class="col-md-6">
-                      <label for="input-group-text" class="form-label">Semester</label>
-                      <select class="form-select" aria-label="Default select example">
+                      <label for="sem" class="form-label">Semester</label>
+                      <select class="form-select"  name="sem" id="sem" aria-label="Default select example">
                         <option selected>Select your semester</option>
-                        <option value="1" name="sem">I/II</option>
-                        <option value="2" name="sem">III/IV</option>
-                        <option value="3" name="sem">V/VI</option>
-                        <option value="4" name="sem">VII/VIII</option>
+                        <option value="I/II">I/II</option>
+                        <option value="III/IV">III/IV</option>
+                        <option value="V/VI">V/VI</option>
+                        <option value="VII/VIII">VII/VIII</option>
                       </select>
                     </div>
 
@@ -650,14 +625,14 @@
                   <!-- Place of Birth -->
                   <div class="row mb-3">
                     <div class="col-md-6">
-                      <label for="input-group-text" class="form-label">Place of Birth</label>
-                      <input type="text" name="placeofbirth" class="form-control" required>
+                      <label for="pob" class="form-label">Place of Birth</label>
+                      <input type="text" name="pob" id="pob" class="form-control" required>
                     </div>
 
                     <!-- State -->
                     <div class="col-md-6">
                       <label for="input-group-text" class="form-label">State</label>
-                      <input type="text" name="state" class="form-control" required>
+                      <input type="text" name="state" id="state" class="form-control" required>
                     </div>
                   </div>
 
@@ -680,17 +655,17 @@
                   </div> -->
 
                   <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-2 pt-0">Sex</legend>
+                    <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
                     <div class="col-sm-10">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sex" id="gridRadios1" value="option1"
+                        <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="Male"
                           checked>
                         <label class="form-check-label" for="gridRadios1">
                           Male
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sex" id="gridRadios2" value="option2">
+                        <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="Female">
                         <label class="form-check-label" for="gridRadios2">
                           Female
                         </label>
@@ -702,14 +677,14 @@
                   
 
                   <div class="row mb-3">
-                    <label for="" class="col-sm-2 col-form-label">Address</label>
+                    <label for="address" class="col-sm-2 col-form-label">Address</label>
                     <div class="col-sm-10">
-                      <textarea name="address" class="form-control" style="height: 100px"></textarea>
+                      <textarea name="address" id="address" class="form-control" style="height: 100px"></textarea>
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Submit Button</label>
+                    <label class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-10">
                       <button type="submit" class="btn btn-primary">Submit Form</button>
                     </div>
