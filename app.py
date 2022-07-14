@@ -5,14 +5,14 @@ from datetime import date
 import win32api
 import os
 from flask import *
-# from flaskwebgui import FlaskUI
+from flaskwebgui import FlaskUI
 from flask_sqlalchemy import SQLAlchemy
 import sqlite3
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "fch345gvt36745bvb"
-# ui = FlaskUI(app, maximized=True, close_server_on_exit=False)
+ui = FlaskUI(app, maximized=True, close_server_on_exit=False)
 
 
 ############### Users Database ##############
@@ -186,5 +186,5 @@ def logout():
 
 ############### Main ##############
 if __name__ == '__main__':
-    # ui.run()
-    app.run(debug=True, port=8000)
+    ui.run()
+    # app.run(debug=True, port=8000)
