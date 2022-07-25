@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Users / Profile - NiceAdmin Bootstrap Template</title>
+    <title>Profile</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
 
 
-    <link href=" {{url_for('static', filename='assets/img/favicon.png')}} " rel="icon">
+    <link href=" {{url_for('static', filename='assets/img/favicon.ico')}} " rel="icon">
     <link href="  {{url_for('static', filename='assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -230,8 +230,8 @@
 
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Ashutosh</h6>
-                <span>2KL19EC016</span>
+                <h6>{{session.username}}</h6>
+                <span>{{session.name}}</span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -554,7 +554,7 @@
 
                 <img src="{{url_for('static', filename='assets/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
                 <h2>{{session.username}}</h2>
-                <h3>2KL19EC016</h3>
+                <h3>{{session.name}}</h3>
                 <!-- <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -595,39 +595,39 @@
 
                     <div class="row">
                       <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                      <div class="col-lg-9 col-md-8">Ashutosh</div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-lg-3 col-md-4 label">Branch</div>
-                      <div class="col-lg-9 col-md-8">Electronics And Communication</div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-lg-3 col-md-4 label">USN</div>
-                      <div class="col-lg-9 col-md-8">2KL19EC016</div>
-                    </div>
-
-                    <!-- <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Country</div>
-                    <div class="col-lg-9 col-md-8">USA</div>
-                  </div> -->
-
-                    <div class="row">
-                      <div class="col-lg-3 col-md-4 label">Address</div>
-                      <div class="col-lg-9 col-md-8">KLE Dr. M S Sheshgiri College of Engineering
-                        & Technology,Udyambag,Belagavi</div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-lg-3 col-md-4 label">Phone</div>
-                      <div class="col-lg-9 col-md-8">6360262475</div>
+                      <div class="col-lg-9 col-md-8">{{session.name}}</div>
                     </div>
 
                     <div class="row">
                       <div class="col-lg-3 col-md-4 label">Email</div>
-                      <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                      <div class="col-lg-9 col-md-8">{{session.email}}</div>
                     </div>
+
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">Username</div>
+                      <div class="col-lg-9 col-md-8">{{session.username}}</div>
+                    </div>
+
+                    <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Phone</div>
+                    <div class="col-lg-9 col-md-8">{{session.phone}}</div>
+                  </div>
+
+                    <!-- <div class="row">
+                      <div class="col-lg-3 col-md-4 label">Address</div>
+                      <div class="col-lg-9 col-md-8">KLE Dr. M S Sheshgiri College of Engineering
+                        & Technology,Udyambag,Belagavi</div>
+                    </div> -->
+
+                    <!-- <div class="row">
+                      <div class="col-lg-3 col-md-4 label">Phone</div>
+                      <div class="col-lg-9 col-md-8">6360262475</div>
+                    </div> -->
+
+                    <!-- <div class="row">
+                      <div class="col-lg-3 col-md-4 label">Email</div>
+                      <div class="col-lg-9 col-md-8">{{session.email}}</div>
+                    </div> -->
 
                   </div>
 
@@ -651,7 +651,7 @@
                       <div class="row mb-3">
                         <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                         <div class="col-md-8 col-lg-9">
-                          <input name="fullName" type="text" class="form-control" id="fullName" value="Ashutosh">
+                          <input name="fullName" type="text" class="form-control" id="fullName" value="{{session.name}}">
                         </div>
                       </div>
 
@@ -662,18 +662,18 @@
                       </div>
                     </div> -->
 
-                      <div class="row mb-3">
+                      <!-- <div class="row mb-3">
                         <label for="company" class="col-md-4 col-lg-3 col-form-label">Branch</label>
                         <div class="col-md-8 col-lg-9">
                           <input name="company" type="text" class="form-control" id="company"
                             value="Electronics and Communication">
                         </div>
-                      </div>
+                      </div> -->
 
                       <div class="row mb-3">
-                        <label for="Job" class="col-md-4 col-lg-3 col-form-label">USN</label>
+                        <label for="Job" class="col-md-4 col-lg-3 col-form-label">Email</label>
                         <div class="col-md-8 col-lg-9">
-                          <input name="job" type="text" class="form-control" id="Job" value="2KL19EC016">
+                          <input name="job" type="text" class="form-control" id="Job" value="{{session.email}}">
                         </div>
                       </div>
 
@@ -685,27 +685,27 @@
                     </div> -->
 
                       <div class="row mb-3">
-                        <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                        <label for="Address" class="col-md-4 col-lg-3 col-form-label">Username</label>
                         <div class="col-md-8 col-lg-9">
                           <input name="address" type="text" class="form-control" id="Address"
-                            value="KLE Dr. M S Sheshgiri College of Engineering & Technology">
+                            value="{{session.username}}">
                         </div>
                       </div>
 
                       <div class="row mb-3">
                         <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                         <div class="col-md-8 col-lg-9">
-                          <input name="phone" type="text" class="form-control" id="Phone" value="6305438975">
+                          <input name="phone" type="text" class="form-control" id="Phone" value="{{session.phone}}">
                         </div>
                       </div>
 
-                      <div class="row mb-3">
+                      <!-- <div class="row mb-3">
                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                         <div class="col-md-8 col-lg-9">
                           <input name="email" type="email" class="form-control" id="Email"
                             value="k.anderson@example.com">
                         </div>
-                      </div>
+                      </div> -->
 
                       <!-- <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>

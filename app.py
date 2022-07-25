@@ -18,7 +18,7 @@ app.config['SECRET_KEY'] = "fch345gvt36745bvb"
 ############### Users Database ##############
 conn = sqlite3.connect("signup.db")
 c = conn.cursor()
-c.execute("CREATE TABLE IF NOT EXISTS Users(username TEXT, password TEXT)")
+c.execute("CREATE TABLE IF NOT EXISTS Users(name TEXT, email TEXT, username TEXT, password TEXT, phone TEXT)")
 conn.commit()
 conn.close()
 
@@ -42,13 +42,17 @@ def home():
 def signup():
     if request.method == 'POST':
         if request.form['username'] != "" and request.form['password'] != "":
+            name = request.form['name']
+            email = request.form['email']
+            phone = request.form['phone']
             username = request.form['username']
             password = request.form['password']
 
             conn = sqlite3.connect("signup.db")
             c = conn.cursor()
-            c.execute("INSERT INTO Users VALUES('" +
-                      username+"', '"+password+"')")
+            # c.execute("INSERT INTO Users VALUES('" +
+                    #   username+"', '"+password+"')")
+            c.execute('INSERT INTO Users (name,email,phone,username,password) VALUES("%s","%s","%s","%s","%s")'%(name,email,phone,username,password))
             msg = 'Account is created sucessfully'
             conn.commit()
             conn.close()
@@ -72,13 +76,24 @@ def login():
                   userName+"' and password = '"+password+"'")
         r = c.fetchall()
 
-        for user in r:
-            if userName == user[0] and password == user[1]:
-                session["loggedin"] = True
-                session["username"] = userName
-                return redirect(url_for("dashboard"))
-            else:
-                msg = "Enter valid username and password"
+        # print(r)
+        # print(userName)
+        # print(password)
+
+        if r == []:
+            msg = "Incorrect username or password"
+
+        else:
+            
+            for user in r:
+                if userName == user[2] and password == user[3]:
+                    session["loggedin"] = True
+                    session["username"] = userName
+                    session["name"] = user[0]
+                    session["email"] = user[1]
+                    session["phone"] = user[4]
+                    return redirect(url_for("dashboard"))
+                
 
     return render_template('login.html', msg=msg)
 
@@ -128,6 +143,59 @@ def documents():
 ################### Bonafide Page #####################
 @app.route('/bonafide', methods=['GET','POST'])
 def bonafide():
+    def details():
+        msg = ""
+        r = ""
+        if request.method == 'POST':
+            usn = request.form['usn']
+            conn = sqlite3.connect("students.db")
+            c = conn.cursor()
+            c.execute("SELECT * FROM Students WHERE usn ='" +
+                  usn+"'")
+            r = c.fetchall()
+            print(r)
+            if r == []:
+                msg = "Student not found."
+                return msg
+            ################# Document Generator ######################
+            else:
+                d = r[0]
+                usn = d[0]
+                name = d[1].title()
+                dob = d[2]
+                branch = d[3]
+                sem = d[4]
+
+            
+                bonafideTemplate = "Documents/bonafide.docx"
+                bonafide = MailMerge(bonafideTemplate)
+
+                # Info to be replaced
+                bonafide.merge(
+                    name=name,
+                    branch=branch,
+                    usn=usn,
+                    sem=sem,
+                    # degree=degree,
+                    dob=dob,
+                    date='{:%d-%b-%Y}'.format(date.today()),
+                )
+
+                # Save the document
+                bonafide.write(f'StudentDocs\Bonafide\{name}_Bonafide.docx')
+
+                # Print the document
+                filename = f'StudentDocs\Bonafide\{name}_Bonafide.docx'
+                win32api.ShellExecute(0, 'print', filename, None, '.', 0)
+                msg = "Bonafide generated sucessfully"
+                return msg
+                 
+    d  = details()
+    return render_template("bonafide.html", msg=d)
+
+################### Study Certificate Page #####################
+@app.route('/studyCertificate', methods=['GET','POST'])
+def studyCertificate():
     
     msg = ""
     def details():
@@ -149,13 +217,12 @@ def bonafide():
             branch = d[3]
             sem = d[4]
 
-            # Define the templates - assumes they are in the same directory as the code
-            # studyCertificate = "Documents/studyCertificate.docx"
-            bonafideTemplate = "Documents/bonafide.docx"
-            bonafide = MailMerge(bonafideTemplate)
+    
+            studyCertificateTemplate = "Documents/studyCertificate.docx"
+            studyCertificate = MailMerge(studyCertificateTemplate)
 
             # Info to be replaced
-            bonafide.merge(
+            studyCertificate.merge(
                 name=name,
                 branch=branch,
                 usn=usn,
@@ -166,15 +233,16 @@ def bonafide():
             )
 
             # Save the document
-            bonafide.write(f'StudentDocs\{name}_Bonafide.docx')
+            bonafide.write(f'StudentDocs\Study Certificate\{name}_StudyCertificate.docx')
 
             # Print the document
-            filename = f'StudentDocs\{name}_Bonafide.docx'
+            filename = f'StudentDocs\Study Certificate\{name}_StudyCertificate.docx'
             win32api.ShellExecute(0, 'print', filename, None, '.', 0)
                  
     details()
-    return render_template("bonafide.html", msg=msg)
-   
+    return render_template("study-certificate.html", msg=msg)
+
+
 ################### About College Page #####################
 @app.route('/aboutCollege')
 def aboutCollege():

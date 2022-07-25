@@ -11,7 +11,7 @@
     <!-- Favicons -->
 
     <link
-      href=" {{url_for('static', filename='assets/img/favicon.png')}} "
+      href=" {{url_for('static', filename='assets/img/favicon.ico')}} "
       rel="icon"
     />
     <link
@@ -320,7 +320,7 @@
             >
               <li class="dropdown-header">
                 <h6>{{session.username}}</h6>
-                <span>2KL19EC016</span>
+                <span>{{session.name}}</span>
               </li>
               <li>
                 <hr class="dropdown-divider" />
@@ -696,7 +696,7 @@
                     </ul> -->
                 </div>
 
-                <a href="#">
+                <a href="/studyCertificate">
                   <div class="card-body">
                     <h5 class="card-title"><span></span></h5>
   
