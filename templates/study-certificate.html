@@ -436,6 +436,13 @@
 
       <section class="section dashboard">
         <form row g-3 needs-validation action="#" method="post">
+
+          <div class="text-left small text-danger">
+            {%if msg%}
+            {{msg}}
+            {%endif%}
+          </div>
+          
           <div class="row mb-3 col-form-label">
             <div class="col-md-3">
               <label for="usn" class="form-label">USN</label>

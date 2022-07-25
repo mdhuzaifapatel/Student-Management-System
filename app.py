@@ -6,7 +6,6 @@ import win32api
 import os
 from flask import *
 # from flaskwebgui import FlaskUI
-# from flask_sqlalchemy import SQLAlchemy
 import sqlite3
 
 
@@ -61,7 +60,6 @@ def signup():
         msg = 'Something went wrong'
     return render_template('signup.html', msg=msg)
 
-
 ################### Login Page ####################
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -97,7 +95,6 @@ def login():
 
     return render_template('login.html', msg=msg)
 
-
 #################### Dashboard Page #####################
 @app.route('/dashboard')
 def dashboard():
@@ -128,7 +125,6 @@ def studentRegister():
     else:
         msg = 'Something went wrong'
     return render_template('student-details.html', msg=msg)
-
 
 ################### User Profile Page #####################
 @app.route('/profile')
@@ -187,7 +183,7 @@ def bonafide():
                 # Print the document
                 filename = f'StudentDocs\Bonafide\{name}_Bonafide.docx'
                 win32api.ShellExecute(0, 'print', filename, None, '.', 0)
-                msg = "Bonafide generated sucessfully"
+                msg = "Bonafide generated sucessfully."
                 return msg
                  
     d  = details()
@@ -196,9 +192,8 @@ def bonafide():
 ################### Study Certificate Page #####################
 @app.route('/studyCertificate', methods=['GET','POST'])
 def studyCertificate():
-    
-    msg = ""
     def details():
+        msg = ""
         r = ""
         if request.method == 'POST':
             usn = request.form['usn']
@@ -208,40 +203,44 @@ def studyCertificate():
                   usn+"'")
             r = c.fetchall()
             # print(r)
-
+            if r == []:
+                msg = "Student not found."
+                return msg
             ################# Document Generator ######################
-            d = r[0]
-            usn = d[0]
-            name = d[1].title()
-            dob = d[2]
-            branch = d[3]
-            sem = d[4]
+            else:
+                d = r[0]
+                usn = d[0]
+                name = d[1].title()
+                dob = d[2]
+                branch = d[3]
+                sem = d[4]
 
-    
-            studyCertificateTemplate = "Documents/studyCertificate.docx"
-            studyCertificate = MailMerge(studyCertificateTemplate)
+            
+                studyCertificateTemplate = "Documents/studyCertificate.docx"
+                studyCertificate = MailMerge(studyCertificateTemplate)
 
-            # Info to be replaced
-            studyCertificate.merge(
-                name=name,
-                branch=branch,
-                usn=usn,
-                sem=sem,
-                # degree=degree,
-                dob=dob,
-                date='{:%d-%b-%Y}'.format(date.today()),
-            )
+                # Info to be replaced
+                studyCertificate.merge(
+                    name=name,
+                    branch=branch,
+                    usn=usn,
+                    sem=sem,
+                    # degree=degree,
+                    dob=dob,
+                    date='{:%d-%b-%Y}'.format(date.today()),
+                )
 
-            # Save the document
-            bonafide.write(f'StudentDocs\Study Certificate\{name}_StudyCertificate.docx')
+                # Save the document
+                studyCertificate.write(f'StudentDocs\Study Certificate\{name}_StudyCertificate.docx')
 
-            # Print the document
-            filename = f'StudentDocs\Study Certificate\{name}_StudyCertificate.docx'
-            win32api.ShellExecute(0, 'print', filename, None, '.', 0)
+                # Print the document
+                filename = f'StudentDocs\Study Certificate\{name}_StudyCertificate.docx'
+                win32api.ShellExecute(0, 'print', filename, None, '.', 0)
+                msg = "Study Certificate generated sucessfully."
+                return msg
                  
-    details()
-    return render_template("study-certificate.html", msg=msg)
-
+    d  = details()
+    return render_template("study-certificate.html", msg=d)
 
 ################### About College Page #####################
 @app.route('/aboutCollege')
@@ -258,7 +257,6 @@ def appInfo():
 def logout():
     session.clear()
     return redirect(url_for('login'))
-
 
 ############### Main ##############
 if __name__ == '__main__':
