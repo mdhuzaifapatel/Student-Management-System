@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Dashboard</title>
+    <title>About College </title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -623,13 +623,15 @@
 
     <main id="main" class="main">
       <div class="pagetitle">
-        <h1>Dashboard</h1>
+        <h1>About College</h1>
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
               <a href="{{url_for('dashboard')}}">Home</a>
             </li>
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item active">
+              <a href="{{url_for('dashboard')}}">Dashboard</a>
+            </li>
           </ol>
         </nav>
       </div>
@@ -641,163 +643,49 @@
         <div class="col-lg-12">
           <div class="row">
             <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card zoom">
-                <div class="filter">
-                  <!-- <a class="icon" href="#" data-bs-toggle="dropdown"></a> -->
-                  <!-- <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul> -->
-                </div>
-
-                <a href="/studentRegister">
-                  <div class="card-body">
-                    <h5 class="card-title"><span></span></h5>
-
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
-                      >
-                        <i class="bi bi-person-plus-fill"></i>
-                      </div>
-
-                      <div class="ps-3">
-                        <h6>Register a Student</h6>
-                        <!-- <span class="text-success small pt-1 fw-bold">12%</span> -->
-                        <!-- <span class="text-muted small pt-2 ps-1">increase</span> -->
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
+              
             </div>
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card zoom">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"></a>
-                  <!-- <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
 
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul> -->
-                </div>
-
-                <a href="/documents">
-                  <div class="card-body">
-                    <h5 class="card-title"><span></span></h5>
-  
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
-                      >
-                        <i class="bi bi-file-earmark-pdf-fill"></i>
-                      </div>
-                      <div class="ps-3">
-                        <h6>Documents</h6>
-                        <!-- <span class="text-success small pt-1 fw-bold"></span> -->
-                        <!-- <span class="text-muted small pt-2 ps-1"></span> -->
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                
-
-              </div>
-            </div>
-            <!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card zoom">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"></a>
-                  <!-- <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul> -->
-                </div>
-
-                <a href="/aboutCollege">
-                <div class="card-body">
-                  <h5 class="card-title"><span></span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div
-                      class="card-icon rounded-circle d-flex align-items-center justify-content-center"
-                    >
-                      <i class="bi bi-building"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>About College</h6>
-                      <!-- <span class="text-success small pt-1 fw-bold"></span> -->
-                      <!-- <span class="text-muted small pt-2 ps-1"></span> -->
-                    </div>
-                  </div>
-                </div>
-              </a>
-              </div>
-            </div>
-            <!-- End Revenue Card -->
-
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card zoom">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"></a>
-                  <!-- <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul> -->
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title"><span></span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div
-                      class="card-icon rounded-circle d-flex align-items-center justify-content-center"
-                    >
-                      <i class="bi bi-info-circle-fill"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>App info</h6>
-                      <!-- <span class="text-success small pt-1 fw-bold"></span> -->
-                      <!-- <span class="text-muted small pt-2 ps-1"></span> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Customers Card -->
-
+            <!-- <div class="d-flex flex-row mb-3">
+              <div class=".img-fluid">
+              <img
+                src="{{url_for('static', filename='assets/img/kleClg.png')}}"
+                alt="klePhoto"
+              />
+            </div> -->
+            <!-- <div class="p-4">
+              <p>
+                KLE Dr.M S Sheshgiri College of Engineering and Technology,
+                Belagavi belongs to KLE Society, a society which has a legacy
+                of 102 years in the field of Education and is one of the
+                largest education societies in the Asia continent. Established
+                in the year 1979, KLE DR.MSSCET is a Self-financing,
+                Non-Autonomous and an ISO 9001:2015 Certified Institution
+                approved by AICTE, New Delhi and Permanently Affiliated to
+                Visvesvaraya Technological University, Belagavi. All the Seven
+                B. E. Courses (Civil, Mechanical, E & E, E & C, CSE, Chemical
+                and Biomedical Engineering) are accredited by National Board
+                of Accreditation (NBA), New Delhi. The Institution is
+                recognized under Section 2(f) of UGC Act 1956. The Institute
+                conducts a full range of academic activities in the field of
+                Engineering and Management education covering research,
+                teaching, training, consulting and intellectual infrastructure
+                development. The Institute focuses on holistic development of
+                students by adopting the most innovative and creative
+                dimension to impart quality education and employability skills
+                The college aims to positively impact the student’s lives by
+                making premium education affordable and accessible to
+                everyone. We believe that for learning to be effective, it
+                needs to be delivered in a congenial environment that not just
+                nurtures but stimulates the interest of the best minds that
+                receive it. KLE DR.MSSCET offers a world-class infrastructure
+                that supports the pursuit of knowledge and the exercise of
+                individual interests.
+              </p>
+            </div> -->
+            
+          
+            
             <!-- Reports -->
             <!-- <div class="col-12">
                 <div class="card">
@@ -1118,6 +1006,8 @@
             <!-- End Top Selling -->
           </div>
         </div>
+
+        
         <!-- End Left side columns -->
 
         <!-- Right side columns -->
@@ -1482,6 +1372,24 @@
         <!-- End Right side columns -->
         <!-- </div> -->
       </section>
+
+
+
+      <div class="container">
+        <div class="col-md-4">
+            <img class="rounded mx-auto d-block img-responsive" src="{{url_for('static', filename='assets/img/kleClg.png')}}">
+        </div>
+        <div class="col-md-20">
+            <p class="mt-2">
+
+              <strong>KLE Dr.M S Sheshgiri College of Engineering and Technology, Belagavi</strong> belongs to KLE Society, a society which has a legacy of 102 years in the field of Education and is one of the largest education societies in the Asia continent.</p>
+
+<p> Established in the year 1979, KLE DR.MSSCET is a Self-financing, Non-Autonomous and an ISO 9001:2015 Certified Institution approved by AICTE, New Delhi and Permanently Affiliated to Visvesvaraya Technological University, Belagavi. All the Seven B. E. Courses (Civil, Mechanical, E & E, E & C, CSE, Chemical and Biomedical Engineering) are accredited by National Board of Accreditation (NBA), New Delhi. The Institution is recognized under Section 2(f) of UGC Act 1956. The Institute conducts a full range of academic activities in the field of Engineering and Management education covering research, teaching, training, consulting and intellectual infrastructure development. The Institute focuses on holistic development of students by adopting the most innovative and creative dimension to impart quality education and employability skills</p>
+
+<p> The college aims to positively impact the student’s lives by making premium education affordable and accessible to everyone. We believe that for learning to be effective, it needs to be delivered in a congenial environment that not just nurtures but stimulates the interest of the best minds that receive it. KLE DR.MSSCET offers a world-class infrastructure that supports the pursuit of knowledge and the exercise of individual interests.
+            </p> 
+        </div>
+    </div>
     </main>
     <!-- End #main -->
 

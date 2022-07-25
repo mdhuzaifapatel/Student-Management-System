@@ -150,6 +150,7 @@ def bonafide():
             sem = d[4]
 
             # Define the templates - assumes they are in the same directory as the code
+            # studyCertificate = "Documents/studyCertificate.docx"
             bonafideTemplate = "Documents/bonafide.docx"
             bonafide = MailMerge(bonafideTemplate)
 
@@ -168,16 +169,23 @@ def bonafide():
             bonafide.write(f'StudentDocs\{name}_Bonafide.docx')
 
             # Print the document
-            filename = f'D:\Learning\PROJECTS\Mini Project\Student-Management-System\StudentDocs\{name}_Bonafide.docx'
+            filename = f'StudentDocs\{name}_Bonafide.docx'
             win32api.ShellExecute(0, 'print', filename, None, '.', 0)
                  
     details()
     return render_template("bonafide.html", msg=msg)
    
+################### About College Page #####################
+@app.route('/aboutCollege')
+def aboutCollege():
+    return render_template("about-college.html")
+
+################### App Info Page #####################
+@app.route('/appInfo')
+def appInfo():
+    return render_template("app-info.html")
 
 ################# Logout session ####################
-
-
 @app.route('/logout')
 def logout():
     session.clear()
