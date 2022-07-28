@@ -24,7 +24,7 @@ conn.close()
 ############### Students Database ##############
 conn = sqlite3.connect("students.db")
 c = conn.cursor()
-c.execute("CREATE TABLE IF NOT EXISTS Students(usn TEXT, fullname TEXT, dob TEXT, branch TEXT, sem TEXT, placeofbirth TEXT, state TEXT, gender TEXT, address TEXT)")
+c.execute("CREATE TABLE IF NOT EXISTS Students(usn TEXT, fullname TEXT, fathername TEXT, dob TEXT, branch TEXT, sem TEXT, placeofbirth TEXT, state TEXT, gender TEXT, address TEXT)")
 conn.commit()
 conn.close()
 
@@ -106,6 +106,7 @@ def studentRegister():
     if request.method == 'POST':
         usn = request.form['usn']
         fname = request.form['fname']
+        father = request.form['father']
         dob = request.form['dob']
         branch = request.form['branch']
         sem = request.form['sem']
@@ -116,7 +117,7 @@ def studentRegister():
 
         conn = sqlite3.connect("students.db")
         cursor = conn.cursor()
-        cursor.execute('INSERT INTO Students (usn,fullname,dob,branch,sem,placeofbirth,state,gender,address) VALUES("%s","%s","%s","%s","%s","%s","%s","%s","%s")'%(usn,fname,dob,branch,sem,pob,state,gender,address))
+        cursor.execute('INSERT INTO Students (usn,fullname,fathername,dob,branch,sem,placeofbirth,state,gender,address) VALUES("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s")'%(usn,fname,father,dob,branch,sem,pob,state,gender,address))
 
         msg = 'Student registered sucessfully'
         conn.commit()
@@ -125,6 +126,17 @@ def studentRegister():
     else:
         msg = 'Something went wrong'
     return render_template('student-details.html', msg=msg)
+
+#################### Students Page #####################
+@app.route('/students', methods=['GET','POST'])
+def students():
+    conn = sqlite3.connect("students.db")
+    c = conn.cursor()
+    c.execute("SELECT * FROM Students ")
+    r = c.fetchall()
+    # print(r)
+    
+    return render_template("students.html",student = r)
 
 ################### User Profile Page #####################
 @app.route('/profile')
@@ -158,9 +170,10 @@ def bonafide():
                 d = r[0]
                 usn = d[0]
                 name = d[1].title()
-                dob = d[2]
-                branch = d[3]
-                sem = d[4]
+                father = d[2].title()
+                dob = d[3]
+                branch = d[4]
+                sem = d[5]
 
             
                 bonafideTemplate = "Documents/bonafide.docx"
@@ -169,10 +182,10 @@ def bonafide():
                 # Info to be replaced
                 bonafide.merge(
                     name=name,
-                    branch=branch,
+                    father=father,
                     usn=usn,
                     sem=sem,
-                    # degree=degree,
+                    branch=branch,
                     dob=dob,
                     date='{:%d-%b-%Y}'.format(date.today()),
                 )
@@ -211,10 +224,9 @@ def studyCertificate():
                 d = r[0]
                 usn = d[0]
                 name = d[1].title()
-                dob = d[2]
-                branch = d[3]
-                sem = d[4]
-
+                father = d[2].title()
+                dob = d[3]
+                branch = d[4]
             
                 studyCertificateTemplate = "Documents/studyCertificate.docx"
                 studyCertificate = MailMerge(studyCertificateTemplate)
@@ -222,10 +234,9 @@ def studyCertificate():
                 # Info to be replaced
                 studyCertificate.merge(
                     name=name,
-                    branch=branch,
+                    father=father,
                     usn=usn,
-                    sem=sem,
-                    # degree=degree,
+                    branch=branch,
                     dob=dob,
                     date='{:%d-%b-%Y}'.format(date.today()),
                 )
