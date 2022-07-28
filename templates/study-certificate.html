@@ -306,7 +306,7 @@
         </ul>
       </li> -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href="{{url_for('studentRegister')}}">
+          <a class="nav-link collapsed" href="{{url_for('students')}}">
             <i class="bi bi-journal-text"></i>
             <span>Student Details</span>
           </a>
@@ -395,17 +395,19 @@
 
         <!-- <li class="nav-heading">Pages</li> -->
 
-        <li class="nav-item">
-          <a class="nav-link" href="{{url_for('profile')}}">
-            <i class="bi bi-person"></i>
-            <span>Profile</span>
-          </a>
-        </li>
+       
         
         <li class="nav-item">
-          <a class="nav-link collapsed" href="{{url_for('signup')}}">
+          <a class="nav-link collapsed" href="/studentRegister">
             <i class="bi bi-card-list"></i>
-            <span>Register</span>
+            <span>Register Student</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{{url_for('profile')}}">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
           </a>
         </li>
         <!-- End Register Page Nav -->

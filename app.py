@@ -5,13 +5,13 @@ from datetime import date
 import win32api
 import os
 from flask import *
-# from flaskwebgui import FlaskUI
+from flaskwebgui import FlaskUI
 import sqlite3
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "fch345gvt36745bvb"
-# ui = FlaskUI(app, maximized=True, close_server_on_exit=False)
+ui = FlaskUI(app, maximized=True, close_server_on_exit=False)
 
 
 ############### Users Database ##############
@@ -29,14 +29,14 @@ conn.commit()
 conn.close()
 
 
-############### Routes ##############
+################# Routes #################
 
-############### Home Page ##############
+################ Home Page ###############
 @app.route('/')
 def home():
     return render_template('home.html')
 
-################## Signup Page ###################
+################### Signup Page #####################
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
@@ -60,7 +60,7 @@ def signup():
         msg = 'Something went wrong'
     return render_template('signup.html', msg=msg)
 
-################### Login Page ####################
+################### Login Page ######################
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     r = ""

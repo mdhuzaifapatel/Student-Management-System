@@ -397,7 +397,7 @@
         <!-- End Dashboard Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="/studentRegister">
+          <a class="nav-link collapsed" href="/students">
             <i class="bi bi-journal-text"></i>
             <span>Student Details</span>
           </a>
@@ -578,12 +578,7 @@
 
         <!-- <li class="nav-heading">Pages</li> -->
 
-        <li class="nav-item">
-          <a class="nav-link" href="{{url_for('profile')}}">
-            <i class="bi bi-person"></i>
-            <span>Profile</span>
-          </a>
-        </li>
+       
         <!-- End Profile Page Nav -->
 
         <!-- <li class="nav-item">
@@ -603,9 +598,15 @@
         <!-- End Contact Page Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="{{url_for('signup')}}">
+          <a class="nav-link collapsed" href="/studentRegister">
             <i class="bi bi-card-list"></i>
-            <span>Register</span>
+            <span>Register Student</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  collapsed" href="{{url_for('profile')}}">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
           </a>
         </li>
         <!-- End Register Page Nav -->
@@ -661,7 +662,7 @@
                   row
                   g-3
                   needs-validation
-                  action="{{ url_for('studentRegister')}}"
+                  action="{{ url_for('students')}}"
                   method="post"
                 >
                   <div class="row mb-3 col-form-label">
